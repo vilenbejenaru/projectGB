@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+  <title>eShop</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <div class="root" id="root">
+    <header class="header">
+      <nav class="menu">
+        <ul class="menu__list">
+          <li class="menu__item"><a class="link menu__link" href="#">Главная</a></li>
+          <li class="menu__item"><a class="link menu__link" href="#">Услуги</a></li>
+          <li class="menu__item"><a class="link menu__link" href="#">Цены</a></li>
+          <li class="menu__item"><a class="link menu__link" href="#">Контакты</a></li>
+          <search-component></search-component>
+        </ul>
+      </nav>
+
+      <cart-component v-bind:cartItemsProps="cartItems"></cart-component>
+
+    </header>
+    <main>
+
+      <section class="products-list">
+        <div class="product" v-for="item in filteredProducts">
+          <img class="product__img" src="https://picsum.photos/100/100" alt="фото товара">
+          <h3 class="product__title">{{item ? item.productName : '' }}</h3>
+          <p class="product__price">{{item ? item.price : ''}} руб.</p>
+          <button class="product__btn-add" @click="addToCart(item)">В корзину</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</body>
+
+<script src="script.js"></script>
+
+</html>
+
+
+</body>
